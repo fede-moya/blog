@@ -8,4 +8,6 @@
 #
 
 
-User.find_or_create_by(email: "fede@gmail.com")
+User.find_or_create_by(email: "fede@gmail.com").tap do |user|
+  WebBlog.create(author: user)
+end
