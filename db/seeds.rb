@@ -9,5 +9,7 @@
 
 
 User.find_or_create_by(email: "fede@gmail.com").tap do |user|
-  WebBlog.create(author: user)
+  WebBlog.find_or_create_by(author: user).tap do |blog|
+    Post.find_or_create_by(title: "first blog", web_blog: blog)
+  end
 end
